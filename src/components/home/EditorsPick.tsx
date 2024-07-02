@@ -2,6 +2,7 @@ import { FC } from "react";
 
 import ArticleDetails from "../common/ArticleDetails";
 import { TransformedPost } from "../../app/utils/transformPosts";
+import { Link } from "react-router-dom";
 
 interface Props {
   editorPicks: TransformedPost[];
@@ -18,7 +19,9 @@ const EditorsPick: FC<Props> = ({ editorPicks }): JSX.Element => {
       </div>
       <div className="flex flex-col gap-[30px] lg:gap-[50px]">
         {editorPicks.map((item, index) => (
-          <ArticleDetails key={index} article={item} withThumbnail={true} />
+          <Link to={`/post/${item.id}`}>
+            <ArticleDetails key={index} article={item} withThumbnail={true} />
+          </Link>
         ))}
       </div>
     </div>
